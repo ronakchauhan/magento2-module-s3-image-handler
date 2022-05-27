@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Ronak Chauhan (ronak.chauhan@y1.de)
+ * @package Y1_S3ImageHandler
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Controller\Adminhtml\Product\Gallery\Upload" type="Y1\S3ImageHandler\Controller\Adminhtml\Product\Gallery\Upload"/>
+
+    <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
+        <plugin name="y1_s3_image_handler_model_cms_wysiwyg_images_storage_plugin" type="Y1\S3ImageHandler\Plugin\Model\Cms\Wysiwyg\Images\Storage" />
+    </type>
+
+    <type name="Magento\MediaStorage\Block\System\Config\System\Storage\Media\Synchronize">
+        <plugin name="y1_s3_image_handler_block_mediastorage_system_config_system_storage_media_synchronise_plugin"
+                type="Y1\S3ImageHandler\Plugin\Block\MediaStorage\System\Config\System\Storage\Media\Synchronise"/>
+    </type>
+    <type name="Magento\MediaStorage\Helper\File\Storage\Database">
+        <plugin name="y1_s3_image_handler_helper_mediastorage_file_storage_database_plugin" type="Y1\S3ImageHandler\Plugin\Helper\MediaStorage\File\Storage\Database" />
+    </type>
+    <type name="Magento\MediaStorage\Model\Config\Source\Storage\Media\Storage">
+        <plugin name="y1_s3_image_handler_model_mediastorage_config_source_storage_media_storage_plugin" type="Y1\S3ImageHandler\Plugin\Model\MediaStorage\Config\Source\Storage\Media\Storage" />
+    </type>
+    <type name="Magento\MediaStorage\Model\File\Storage">
+        <plugin name="y1_s3_image_handler_model_mediastorage_file_storage_plugin" type="Y1\S3ImageHandler\Plugin\Model\MediaStorage\File\Storage" />
+    </type>
+    <type name="\Magento\MediaStorage\Model\File\Storage\Database">
+        <plugin name="y1_s3_image_handler_model_mediastorage_file_storage_database_plugin" type="Y1\S3ImageHandler\Plugin\Model\MediaStorage\File\Storage\Database" />
+    </type>
+    <type name="\Magento\MediaStorage\Model\File\Storage\Directory\Database">
+        <plugin name="y1_s3_image_handler_model_mediastorage_file_storage_directory_database_plugin" type="Y1\S3ImageHandler\Plugin\Model\MediaStorage\File\Storage\Directory\Database" />
+    </type>
+    <type name="Magento\MediaStorage\Model\File\Storage\Synchronization">
+        <plugin name="y1_s3_image_handler_model_mediastorage_file_storage_synchronisation_plugin" type="Y1\S3ImageHandler\Plugin\Model\MediaStorage\File\Storage\Synchronisation" />
+    </type>
+    <type name="Magento\ProductVideo\Controller\Adminhtml\Product\Gallery\RetrieveImage">
+        <arguments>
+            <argument name="fileUtility" xsi:type="object">Y1\S3ImageHandler\Model\ResourceModel\MediaStorage\File\Storage\File</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Config\Model\Config\TypePool">
+        <arguments>
+            <argument name="sensitive" xsi:type="array">
+                <item name="s3_image_handler/general/access_key" xsi:type="string">1</item>
+                <item name="s3_image_handler/general/secret_key" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Theme\Model\Design\Backend\Logo">
+        <plugin name="y1_s3_image_handler_model_theme_design_backend_logo_plugin" type="Y1\S3ImageHandler\Plugin\Model\Theme\Design\Backend\Logo" />
+    </type>
+    <type name="Magento\Store\Model\Store">
+        <plugin name="y1_s3_image_handler_model_store_store_plugin" type="Y1\S3ImageHandler\Plugin\Model\Store\Store" />
+    </type>
+    <type name="Magento\Swatches\Helper\Media">
+        <plugin name="y1_s3_image_handler_helper_swatches_media_plugin" type="Y1\S3ImageHandler\Plugin\Helper\Swatches\Media" />
+    </type>
+    <type name="Magento\Captcha\Model\DefaultModel">
+        <plugin name="y1_s3_image_handler_model_captcha_default_model_plugin" type="Y1\S3ImageHandler\Plugin\Model\Captcha\DefaultModel" />
+    </type>
+</config>

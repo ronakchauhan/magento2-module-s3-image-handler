@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+<group id="default">
+    <job name="y1_s3_image_handler_clean_pub_media_images" instance="Y1\S3ImageHandler\Cron\CleanPubMedia" method="execute">
+        <schedule>0 0 * * *</schedule>
+    </job>
+</group>
+</config>

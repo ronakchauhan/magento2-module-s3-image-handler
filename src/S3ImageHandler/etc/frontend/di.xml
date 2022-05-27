@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Ronak Chauhan (ronak.chauhan@y1.de)
+ * @package Y1_S3ImageHandler
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Image create as per view xml from S3   -->
+    <type name="Magento\Catalog\Block\Product\ImageFactory">
+        <plugin name="after_get_image_plugin" type="Y1\S3ImageHandler\Plugin\Block\Catalog\Product\ImageFactory" sortOrder="10" disabled="false"/>
+    </type>
+    <!-- change product detail page url   -->
+    <preference for="Magento\Catalog\Model\Product\Image\UrlBuilder" type="Y1\S3ImageHandler\Model\Catalog\Product\Image\UrlBuilder"/>
+</config>
